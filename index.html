@@ -185,6 +185,15 @@
     .ih-pagination button:disabled { opacity: .45; cursor: not-allowed; }
     .ih-work-style-active { outline: 2px solid #4648d4; }
     .job-card h2[role="button"] { cursor: pointer; }
+    :focus-visible {
+      outline: 3px solid #4648d4 !important;
+      outline-offset: 3px;
+      border-radius: .25rem;
+    }
+    .job-card h2[role="button"]:focus-visible {
+      display: inline-block;
+      border-radius: .2rem;
+    }
     #home, #feed-container, #cards-feed-wrapper, #footer-resources, #footer-about { scroll-margin-top: 5.5rem; }
     @media (max-width: 767px) {
       header nav a[data-path="login"],
@@ -345,35 +354,35 @@
 <section class="w-full max-w-7xl mx-auto px-margin pb-6">
 <div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm flex flex-col gap-space-md">
 <!-- Domain Filter Pills -->
-<div aria-label="Internship domains" class="flex items-center gap-space-xs overflow-x-auto pb-1 scrollbar-none" role="tablist">
+<div aria-label="Internship domains" class="flex items-center gap-space-xs overflow-x-auto pb-1 scrollbar-none">
 <button aria-pressed="true" class="filter-pill active inline-flex items-center gap-space-xs px-4 py-2.5 rounded-xl bg-secondary text-on-secondary font-label-sm text-label-sm whitespace-nowrap transition-all shadow-sm" data-filter="all" type="button">
 <span>All Domains</span>
-<span class="px-1.5 py-0.5 rounded-full bg-white/20 font-label-xs text-label-xs">2.4k</span>
+<span class="px-1.5 py-0.5 rounded-full bg-white/20 font-label-xs text-label-xs" data-domain-count>6</span>
 </button>
 <button aria-pressed="false" class="filter-pill inline-flex items-center gap-space-xs px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm whitespace-nowrap transition-all" data-filter="swe" type="button">
 <span class="material-symbols-outlined text-[16px]">code</span>
 <span>Software Engineering</span>
-<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs">1,240</span>
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs" data-domain-count>2</span>
 </button>
 <button aria-pressed="false" class="filter-pill inline-flex items-center gap-space-xs px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm whitespace-nowrap transition-all" data-filter="design" type="button">
 <span class="material-symbols-outlined text-[16px]">palette</span>
 <span>UI/UX Design</span>
-<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs">480</span>
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs" data-domain-count>1</span>
 </button>
 <button aria-pressed="false" class="filter-pill inline-flex items-center gap-space-xs px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm whitespace-nowrap transition-all" data-filter="ai" type="button">
 <span class="material-symbols-outlined text-[16px]">psychology</span>
 <span>Data &amp; AI</span>
-<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs">390</span>
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs" data-domain-count>1</span>
 </button>
 <button aria-pressed="false" class="filter-pill inline-flex items-center gap-space-xs px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm whitespace-nowrap transition-all" data-filter="product" type="button">
 <span class="material-symbols-outlined text-[16px]">dashboard</span>
 <span>Product Management</span>
-<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs">210</span>
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs" data-domain-count>1</span>
 </button>
 <button aria-pressed="false" class="filter-pill inline-flex items-center gap-space-xs px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm whitespace-nowrap transition-all" data-filter="marketing" type="button">
 <span class="material-symbols-outlined text-[16px]">campaign</span>
 <span>Marketing &amp; Growth</span>
-<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs">115</span>
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs" data-domain-count>1</span>
 </button>
 </div>
 <!-- Secondary Filters & Interactivity Switches -->
@@ -388,7 +397,7 @@
 <!-- Stipend Selector -->
 <div class="inline-flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1.5 rounded-lg">
 <span class="material-symbols-outlined text-[18px] text-on-tertiary-container">payments</span>
-<span class="font-label-xs text-label-xs text-on-surface-variant uppercase">Min Stipend:</span>
+<label class="font-label-xs text-label-xs text-on-surface-variant uppercase" for="min-stipend-select">Min Stipend:</label>
 <select class="bg-transparent font-label-sm text-label-sm font-semibold text-on-surface focus:outline-none cursor-pointer" id="min-stipend-select">
 <option value="0">Any Wage</option>
 <option value="40">$40+ / hr</option>
@@ -399,7 +408,7 @@
 <!-- Duration Filter -->
 <div class="inline-flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1.5 rounded-lg">
 <span class="material-symbols-outlined text-[18px] text-on-surface-variant">calendar_month</span>
-<span class="font-label-xs text-label-xs text-on-surface-variant uppercase">Duration:</span>
+<label class="font-label-xs text-label-xs text-on-surface-variant uppercase" for="duration-select">Duration:</label>
 <select class="bg-transparent font-label-sm text-label-sm font-semibold text-on-surface focus:outline-none cursor-pointer" id="duration-select">
 <option value="all">Any Length</option>
 <option value="8-12">8 – 12 Weeks</option>
@@ -432,7 +441,7 @@
 <span class="relative inline-flex rounded-full h-2 w-2 bg-on-tertiary-container"></span>
 </span>
 <span class="font-label-sm text-label-sm text-on-surface-variant">
-        Showing <strong class="text-on-surface" id="visible-count">6</strong> curated internships • Live feed
+        Showing <strong class="text-on-surface" id="visible-count">6</strong> curated internships • Local sample data
       </span>
 </div>
 <!-- Sorting Control -->
@@ -526,315 +535,8 @@
 </div>
 </div>
 </aside>
-<!-- RIGHT MAIN FEED: 6 Internship Listing Cards -->
+<!-- RIGHT MAIN FEED: cards are generated from the local internship data below -->
 <div class="lg:col-span-8 flex flex-col gap-space-md" id="cards-feed-wrapper">
-<!-- CARD 1: Stripe -->
-<article class="job-card bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm hover:shadow-lg transition-all duration-200 flex flex-col justify-between gap-space-md group">
-<div class="flex items-start justify-between gap-space-md">
-<div class="flex items-start gap-space-md min-w-0">
-<!-- Company Avatar -->
-<div class="w-12 h-12 rounded-xl bg-primary text-on-primary flex items-center justify-center font-headline-sm font-bold shadow-md shrink-0">
-                S
-              </div>
-<div class="flex flex-col min-w-0">
-<div class="flex items-center gap-2 flex-wrap">
-<span class="font-label-md text-label-md text-on-surface font-bold">Stripe</span>
-<span class="material-symbols-outlined text-[16px] text-secondary" title="Verified Employer">verified</span>
-<span class="font-label-xs text-label-xs text-on-surface-variant">• Payments Infrastructure</span>
-</div>
-<h2 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors truncate mt-0.5">
-                  Software Engineering Intern (Payments &amp; Core)
-                </h2>
-</div>
-</div>
-<!-- Bookmark Button -->
-<button aria-label="Save Stripe Internship" class="text-on-surface-variant hover:text-secondary p-1 rounded-lg hover:bg-surface-container transition-colors shrink-0" type="button">
-<span class="material-symbols-outlined text-[22px]">bookmark_border</span>
-</button>
-</div>
-<!-- Metadata Tags Row -->
-<div class="flex flex-wrap items-center gap-space-xs">
-<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs font-semibold">
-              Software Engineering
-            </span>
-<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs">
-<span class="material-symbols-outlined text-[14px]">public</span> Remote • SF Hub
-            </span>
-<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs">
-<span class="material-symbols-outlined text-[14px]">calendar_today</span> 12 Weeks (Summer 2025)
-            </span>
-</div>
-<!-- Bottom Action Bar with Emerald Stipend -->
-<div class="flex items-center justify-between pt-space-xs">
-<div class="flex items-center gap-space-md">
-<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-title-md text-title-md font-bold shadow-sm">
-                $58 <span class="text-label-xs font-normal">/ hr</span>
-</span>
-<span class="font-label-xs text-label-xs text-on-surface-variant">Posted 2h ago</span>
-</div>
-<div class="flex items-center gap-space-xs">
-<a class="px-5 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-inverse-surface font-label-md text-label-md transition-all shadow-sm flex items-center gap-1" href="#quick-apply">
-<span>Apply Now</span>
-<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</div>
-</article>
-<!-- CARD 2: Figma -->
-<article class="job-card bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm hover:shadow-lg transition-all duration-200 flex flex-col justify-between gap-space-md group">
-<div class="flex items-start justify-between gap-space-md">
-<div class="flex items-start gap-space-md min-w-0">
-<!-- Company Avatar -->
-<div class="w-12 h-12 rounded-xl bg-secondary text-on-secondary flex items-center justify-center font-headline-sm font-bold shadow-md shrink-0">
-                F
-              </div>
-<div class="flex flex-col min-w-0">
-<div class="flex items-center gap-2 flex-wrap">
-<span class="font-label-md text-label-md text-on-surface font-bold">Figma</span>
-<span class="material-symbols-outlined text-[16px] text-secondary" title="Verified Employer">verified</span>
-<span class="font-label-xs text-label-xs text-on-surface-variant">• Design Systems</span>
-</div>
-<h2 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors truncate mt-0.5">
-                  Product Design Intern (Collaborative UI)
-                </h2>
-</div>
-</div>
-<button aria-label="Save Figma Internship" class="text-on-surface-variant hover:text-secondary p-1 rounded-lg hover:bg-surface-container transition-colors shrink-0" type="button">
-<span class="material-symbols-outlined text-[22px]">bookmark_border</span>
-</button>
-</div>
-<!-- Metadata Tags Row -->
-<div class="flex flex-wrap items-center gap-space-xs">
-<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs font-semibold">
-              UI/UX Design
-            </span>
-<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs">
-<span class="material-symbols-outlined text-[14px]">domain</span> San Francisco, CA (Hybrid)
-            </span>
-<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs">
-<span class="material-symbols-outlined text-[14px]">event_repeat</span> 12 Weeks
-            </span>
-</div>
-<!-- Bottom Action Bar with Emerald Stipend -->
-<div class="flex items-center justify-between pt-space-xs">
-<div class="flex items-center gap-space-md">
-<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-title-md text-title-md font-bold shadow-sm">
-                $52 <span class="text-label-xs font-normal">/ hr</span>
-</span>
-<span class="font-label-xs text-label-xs text-on-surface-variant">Apply by May 15</span>
-</div>
-<div class="flex items-center gap-space-xs">
-<a class="px-5 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-inverse-surface font-label-md text-label-md transition-all shadow-sm flex items-center gap-1" href="#quick-apply">
-<span>Apply Now</span>
-<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</div>
-</article>
-<!-- CARD 3: Linear -->
-<article class="job-card bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm hover:shadow-lg transition-all duration-200 flex flex-col justify-between gap-space-md group">
-<div class="flex items-start justify-between gap-space-md">
-<div class="flex items-start gap-space-md min-w-0">
-<!-- Company Avatar -->
-<div class="w-12 h-12 rounded-xl bg-surface-container-highest text-on-surface flex items-center justify-center font-headline-sm font-bold shadow-md shrink-0">
-                L
-              </div>
-<div class="flex flex-col min-w-0">
-<div class="flex items-center gap-2 flex-wrap">
-<span class="font-label-md text-label-md text-on-surface font-bold">Linear</span>
-<span class="material-symbols-outlined text-[16px] text-secondary" title="Verified Employer">verified</span>
-<span class="font-label-xs text-label-xs text-on-surface-variant">• Project Tools</span>
-</div>
-<h2 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors truncate mt-0.5">
-                  Frontend &amp; Design Engineering Intern
-                </h2>
-</div>
-</div>
-<button aria-label="Save Linear Internship" class="text-on-surface-variant hover:text-secondary p-1 rounded-lg hover:bg-surface-container transition-colors shrink-0" type="button">
-<span class="material-symbols-outlined text-[22px]">bookmark_border</span>
-</button>
-</div>
-<!-- Metadata Tags Row -->
-<div class="flex flex-wrap items-center gap-space-xs">
-<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs font-semibold">
-              Software Engineering
-            </span>
-<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs">
-<span class="material-symbols-outlined text-[14px]">wifi</span> 100% Remote
-            </span>
-<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs">
-<span class="material-symbols-outlined text-[14px]">laptop_mac</span> $2.5k Setup Grant
-            </span>
-</div>
-<!-- Bottom Action Bar with Emerald Stipend -->
-<div class="flex items-center justify-between pt-space-xs">
-<div class="flex items-center gap-space-md">
-<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-title-md text-title-md font-bold shadow-sm">
-                $50 <span class="text-label-xs font-normal">/ hr</span>
-</span>
-<span class="font-label-xs text-label-xs text-on-surface-variant">Posted 5h ago</span>
-</div>
-<div class="flex items-center gap-space-xs">
-<a class="px-5 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-inverse-surface font-label-md text-label-md transition-all shadow-sm flex items-center gap-1" href="#quick-apply">
-<span>Apply Now</span>
-<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</div>
-</article>
-<!-- CARD 4: Anthropic -->
-<article class="job-card bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm hover:shadow-lg transition-all duration-200 flex flex-col justify-between gap-space-md group">
-<div class="flex items-start justify-between gap-space-md">
-<div class="flex items-start gap-space-md min-w-0">
-<!-- Company Avatar -->
-<div class="w-12 h-12 rounded-xl bg-on-tertiary-container text-on-tertiary flex items-center justify-center font-headline-sm font-bold shadow-md shrink-0">
-                A
-              </div>
-<div class="flex flex-col min-w-0">
-<div class="flex items-center gap-2 flex-wrap">
-<span class="font-label-md text-label-md text-on-surface font-bold">Anthropic</span>
-<span class="material-symbols-outlined text-[16px] text-secondary" title="Verified Employer">verified</span>
-<span class="font-label-xs text-label-xs text-on-surface-variant">• AI Safety &amp; Alignment</span>
-</div>
-<h2 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors truncate mt-0.5">
-                  Machine Learning Research Intern (LLMs)
-                </h2>
-</div>
-</div>
-<button aria-label="Save Anthropic Internship" class="text-on-surface-variant hover:text-secondary p-1 rounded-lg hover:bg-surface-container transition-colors shrink-0" type="button">
-<span class="material-symbols-outlined text-[22px]">bookmark_border</span>
-</button>
-</div>
-<!-- Metadata Tags Row -->
-<div class="flex flex-wrap items-center gap-space-xs">
-<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs font-semibold">
-              Data &amp; AI
-            </span>
-<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs">
-<span class="material-symbols-outlined text-[14px]">location_on</span> San Francisco, CA
-            </span>
-<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs">
-<span class="material-symbols-outlined text-[14px]">schedule</span> 14 Weeks
-            </span>
-</div>
-<!-- Bottom Action Bar with Emerald Stipend -->
-<div class="flex items-center justify-between pt-space-xs">
-<div class="flex items-center gap-space-md">
-<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-title-md text-title-md font-bold shadow-sm">
-                $65 <span class="text-label-xs font-normal">/ hr</span>
-</span>
-<span class="font-label-xs text-label-xs text-on-surface-variant">Top Tier Stipend</span>
-</div>
-<div class="flex items-center gap-space-xs">
-<a class="px-5 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-inverse-surface font-label-md text-label-md transition-all shadow-sm flex items-center gap-1" href="#quick-apply">
-<span>Apply Now</span>
-<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</div>
-</article>
-<!-- CARD 5: Notion -->
-<article class="job-card bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm hover:shadow-lg transition-all duration-200 flex flex-col justify-between gap-space-md group">
-<div class="flex items-start justify-between gap-space-md">
-<div class="flex items-start gap-space-md min-w-0">
-<!-- Company Avatar -->
-<div class="w-12 h-12 rounded-xl bg-secondary-container text-on-secondary flex items-center justify-center font-headline-sm font-bold shadow-md shrink-0">
-                N
-              </div>
-<div class="flex flex-col min-w-0">
-<div class="flex items-center gap-2 flex-wrap">
-<span class="font-label-md text-label-md text-on-surface font-bold">Notion</span>
-<span class="material-symbols-outlined text-[16px] text-secondary" title="Verified Employer">verified</span>
-<span class="font-label-xs text-label-xs text-on-surface-variant">• Workspace Platform</span>
-</div>
-<h2 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors truncate mt-0.5">
-                  Associate Product Management Intern
-                </h2>
-</div>
-</div>
-<button aria-label="Save Notion Internship" class="text-on-surface-variant hover:text-secondary p-1 rounded-lg hover:bg-surface-container transition-colors shrink-0" type="button">
-<span class="material-symbols-outlined text-[22px]">bookmark_border</span>
-</button>
-</div>
-<!-- Metadata Tags Row -->
-<div class="flex flex-wrap items-center gap-space-xs">
-<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs font-semibold">
-              Product Management
-            </span>
-<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs">
-<span class="material-symbols-outlined text-[14px]">apartment</span> New York, NY (Hybrid)
-            </span>
-<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs">
-<span class="material-symbols-outlined text-[14px]">calendar_month</span> 12 Weeks
-            </span>
-</div>
-<!-- Bottom Action Bar with Emerald Stipend -->
-<div class="flex items-center justify-between pt-space-xs">
-<div class="flex items-center gap-space-md">
-<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-title-md text-title-md font-bold shadow-sm">
-                $48 <span class="text-label-xs font-normal">/ hr</span>
-</span>
-<span class="font-label-xs text-label-xs text-on-surface-variant">Fast Review</span>
-</div>
-<div class="flex items-center gap-space-xs">
-<a class="px-5 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-inverse-surface font-label-md text-label-md transition-all shadow-sm flex items-center gap-1" href="#quick-apply">
-<span>Apply Now</span>
-<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</div>
-</article>
-<!-- CARD 6: Spotify -->
-<article class="job-card bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm hover:shadow-lg transition-all duration-200 flex flex-col justify-between gap-space-md group">
-<div class="flex items-start justify-between gap-space-md">
-<div class="flex items-start gap-space-md min-w-0">
-<!-- Company Avatar -->
-<div class="w-12 h-12 rounded-xl bg-on-tertiary-container text-on-tertiary flex items-center justify-center font-headline-sm font-bold shadow-md shrink-0">
-                S
-              </div>
-<div class="flex flex-col min-w-0">
-<div class="flex items-center gap-2 flex-wrap">
-<span class="font-label-md text-label-md text-on-surface font-bold">Spotify</span>
-<span class="material-symbols-outlined text-[16px] text-secondary" title="Verified Employer">verified</span>
-<span class="font-label-xs text-label-xs text-on-surface-variant">• Creator &amp; Music Tech</span>
-</div>
-<h2 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors truncate mt-0.5">
-                  Brand &amp; Content Growth Marketing Intern
-                </h2>
-</div>
-</div>
-<button aria-label="Save Spotify Internship" class="text-on-surface-variant hover:text-secondary p-1 rounded-lg hover:bg-surface-container transition-colors shrink-0" type="button">
-<span class="material-symbols-outlined text-[22px]">bookmark_border</span>
-</button>
-</div>
-<!-- Metadata Tags Row -->
-<div class="flex flex-wrap items-center gap-space-xs">
-<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs font-semibold">
-              Marketing &amp; Growth
-            </span>
-<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs">
-<span class="material-symbols-outlined text-[14px]">location_on</span> New York, NY
-            </span>
-<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs">
-<span class="material-symbols-outlined text-[14px]">group</span> 10 Weeks Cohort
-            </span>
-</div>
-<!-- Bottom Action Bar with Emerald Stipend -->
-<div class="flex items-center justify-between pt-space-xs">
-<div class="flex items-center gap-space-md">
-<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-title-md text-title-md font-bold shadow-sm">
-                $42 <span class="text-label-xs font-normal">/ hr</span>
-</span>
-<span class="font-label-xs text-label-xs text-on-surface-variant">Summer Cohort</span>
-</div>
-<div class="flex items-center gap-space-xs">
-<a class="px-5 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-inverse-surface font-label-md text-label-md transition-all shadow-sm flex items-center gap-1" href="#quick-apply">
-<span>Apply Now</span>
-<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</div>
-</article>
 <!-- Skeleton Preview State (Hidden by default, triggered via preview buttons) -->
 <div class="hidden flex-col gap-space-md animate-pulse" id="skeleton-loader-preview">
 <div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-md">
@@ -899,189 +601,31 @@
             </button>
 </div>
 </div>
+<div class="hidden rounded-2xl bg-surface-container-lowest p-space-lg text-center text-error" id="local-data-error" role="alert">
+          Internship listings could not be displayed because the local sample data is invalid.
+</div>
 <!-- Pagination / Cohort Loader Footer -->
-<div class="flex items-center justify-between pt-space-md">
-<span class="font-label-sm text-label-sm text-on-surface-variant">Page 1 of 42</span>
-<div class="flex items-center gap-2">
-<button class="p-2 rounded-lg bg-surface-container text-outline opacity-50 cursor-not-allowed" disabled="" type="button">
-<span class="material-symbols-outlined text-[18px]">chevron_left</span>
-</button>
-<button class="px-3 py-1 rounded-lg bg-secondary text-on-secondary font-label-sm text-label-sm" type="button">1</button>
-<button class="px-3 py-1 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm hover:bg-surface-container-high transition-colors" type="button">2</button>
-<button class="px-3 py-1 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm hover:bg-surface-container-high transition-colors" type="button">3</button>
-<span class="text-on-surface-variant text-label-sm px-1">...</span>
-<button class="p-2 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" type="button">
-<span class="material-symbols-outlined text-[18px]">chevron_right</span>
-</button>
+<div aria-label="Internship result pages" class="flex items-center justify-between pt-space-md ih-pagination" id="internhub-pagination" role="navigation">
+<span class="font-label-sm text-label-sm text-on-surface-variant" id="internhub-page-label" aria-live="polite">Page 1 of 1</span>
+<div class="flex items-center gap-2" id="pagination-controls">
 </div>
 </div>
 </div>
 </div>
 </section>
-<!-- Client-side Interactive Behaviors -->
 <script>
-    (function initInternHub() {
-      // Elements
-      const filterPills = document.querySelectorAll('.filter-pill');
-      const jobCards = document.querySelectorAll('.job-card');
-      const visibleCount = document.getElementById('visible-count');
-      const btnPreviewLoading = document.getElementById('btn-preview-loading');
-      const btnPreviewEmpty = document.getElementById('btn-preview-empty');
-      const emptyState = document.getElementById('empty-state-preview');
-      const skeletonLoader = document.getElementById('skeleton-loader-preview');
-      const resetFiltersBtn = document.getElementById('reset-filters-btn');
-      const emptyResetBtn = document.getElementById('empty-reset-btn');
-      const emptyRestoreBtn = document.getElementById('empty-restore-btn');
-      const minStipendSelect = document.getElementById('min-stipend-select');
-      const remoteToggle = document.getElementById('remote-toggle');
-
-      // Domain Filter Pills Click
-      filterPills.forEach(pill => {
-        pill.addEventListener('click', () => {
-          filterPills.forEach(p => {
-            p.classList.remove('bg-secondary', 'text-on-secondary', 'shadow-sm', 'active');
-            p.classList.add('bg-surface-container-low', 'text-on-surface-variant');
-            p.setAttribute('aria-pressed', 'false');
-          });
-
-          pill.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
-          pill.classList.add('bg-secondary', 'text-on-secondary', 'shadow-sm', 'active');
-          pill.setAttribute('aria-pressed', 'true');
-
-          const domain = pill.getAttribute('data-filter');
-          filterDomain(domain);
-        });
-      });
-
-      function filterDomain(domain) {
-        if (typeof window.applyInternHubFilters === 'function') {
-          if (typeof window.syncInternHubDomain === 'function') window.syncInternHubDomain(domain);
-          window.applyInternHubFilters();
-          return;
-        }
-
-        // Reset state views
-        emptyState.classList.add('hidden');
-        emptyState.classList.remove('flex');
-        skeletonLoader.classList.add('hidden');
-        skeletonLoader.classList.remove('flex');
-
-        let matches = 0;
-        jobCards.forEach(card => {
-          const cardText = card.textContent.toLowerCase();
-          let show = true;
-
-          if (domain === 'swe' && !cardText.includes('software engineering') && !cardText.includes('frontend')) show = false;
-          if (domain === 'design' && !cardText.includes('design') && !cardText.includes('ui/ux')) show = false;
-          if (domain === 'ai' && !cardText.includes('machine learning') && !cardText.includes('data')) show = false;
-          if (domain === 'product' && !cardText.includes('product management')) show = false;
-          if (domain === 'marketing' && !cardText.includes('marketing') && !cardText.includes('growth')) show = false;
-
-          if (show) {
-            card.classList.remove('hidden');
-            matches++;
-          } else {
-            card.classList.add('hidden');
-          }
-        });
-
-        visibleCount.textContent = matches;
-        if (matches === 0) {
-          emptyState.classList.remove('hidden');
-          emptyState.classList.add('flex');
-        }
-      }
-
-      // Preview Loading State
-      let loadingActive = false;
-      btnPreviewLoading.addEventListener('click', () => {
-        loadingActive = !loadingActive;
-        if (loadingActive) {
-          btnPreviewLoading.textContent = 'Hide Loading State';
-          jobCards.forEach(c => c.classList.add('hidden'));
-          emptyState.classList.add('hidden');
-          emptyState.classList.remove('flex');
-          skeletonLoader.classList.remove('hidden');
-          skeletonLoader.classList.add('flex');
-          visibleCount.textContent = '0';
-        } else {
-          btnPreviewLoading.textContent = 'Preview Loading State';
-          skeletonLoader.classList.add('hidden');
-          skeletonLoader.classList.remove('flex');
-          jobCards.forEach(c => c.classList.remove('hidden'));
-          visibleCount.textContent = '6';
-        }
-      });
-
-      // Preview Empty State
-      btnPreviewEmpty.addEventListener('click', () => {
-        jobCards.forEach(c => c.classList.add('hidden'));
-        skeletonLoader.classList.add('hidden');
-        skeletonLoader.classList.remove('flex');
-        emptyState.classList.remove('hidden');
-        emptyState.classList.add('flex');
-        visibleCount.textContent = '0';
-      });
-
-      // Restore / Clear Handlers
-      function resetAll() {
-        jobCards.forEach(c => c.classList.remove('hidden'));
-        emptyState.classList.add('hidden');
-        emptyState.classList.remove('flex');
-        skeletonLoader.classList.add('hidden');
-        skeletonLoader.classList.remove('flex');
-        visibleCount.textContent = '6';
-
-        // Reset pills
-        filterPills.forEach((p, idx) => {
-          if (idx === 0) {
-            p.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
-            p.classList.add('bg-secondary', 'text-on-secondary', 'shadow-sm', 'active');
-            p.setAttribute('aria-pressed', 'true');
-          } else {
-            p.classList.remove('bg-secondary', 'text-on-secondary', 'shadow-sm', 'active');
-            p.classList.add('bg-surface-container-low', 'text-on-surface-variant');
-            p.setAttribute('aria-pressed', 'false');
-          }
-        });
-
-        if (minStipendSelect) minStipendSelect.value = '0';
-        if (remoteToggle) remoteToggle.checked = false;
-        if (btnPreviewLoading) btnPreviewLoading.textContent = 'Preview Loading State';
-        loadingActive = false;
-      }
-
-      if (resetFiltersBtn) resetFiltersBtn.addEventListener('click', resetAll);
-      if (emptyResetBtn) emptyResetBtn.addEventListener('click', resetAll);
-      if (emptyRestoreBtn) emptyRestoreBtn.addEventListener('click', resetAll);
-
-      // Bookmark Toggle Micro-interaction
-      const bookmarkButtons = document.querySelectorAll('button[aria-label^="Save"]');
-      bookmarkButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          if (typeof window.toggleInternHubBookmark === 'function') {
-            window.toggleInternHubBookmark(btn);
-            return;
-          }
-          const icon = btn.querySelector('.material-symbols-outlined');
-          if (icon.textContent === 'bookmark_border') {
-            icon.textContent = 'bookmark';
-            btn.classList.add('text-secondary');
-          } else {
-            icon.textContent = 'bookmark_border';
-            btn.classList.remove('text-secondary');
-          }
-        });
-      });
-    })();
-  </script>
-  <script>
     document.addEventListener('DOMContentLoaded', function initInternHubFeatures() {
-      const cards = Array.from(document.querySelectorAll('.job-card'));
-      const feed = document.getElementById('cards-feed-wrapper');
-      const filterPills = Array.from(document.querySelectorAll('.filter-pill'));
-      const keywordInput = document.getElementById('keyword-search');
+    const internshipListings = [
+      { id: 'stripe-swe', role: 'Software Engineering Intern (Payments & Core)', company: 'Stripe', domain: 'Software Engineering', domainKey: 'swe', tagline: 'Payments Infrastructure', location: 'Remote • SF Hub', locationCode: 'sf', locationIcon: 'public', workStyle: 'remote', remote: true, stipend: 58, durationWeeks: 12, benefit: '', postedAt: '2026-11-25', deadline: '2026-12-15', avatarClass: 'bg-primary text-on-primary' },
+      { id: 'figma-design', role: 'Product Design Intern (Collaborative UI)', company: 'Figma', domain: 'UI/UX Design', domainKey: 'design', tagline: 'Design Systems', location: 'San Francisco, CA (Hybrid)', locationCode: 'sf', locationIcon: 'domain', workStyle: 'hybrid', remote: false, stipend: 52, durationWeeks: 12, benefit: '', postedAt: '2026-11-24', deadline: '2026-12-10', avatarClass: 'bg-secondary text-on-secondary' },
+      { id: 'linear-frontend', role: 'Frontend & Design Engineering Intern', company: 'Linear', domain: 'Software Engineering', domainKey: 'swe', tagline: 'Project Tools', location: '100% Remote', locationCode: 'remote', locationIcon: 'wifi', workStyle: 'remote', remote: true, stipend: 50, durationWeeks: 12, benefit: '$2.5k Setup Grant', postedAt: '2026-11-23', deadline: '2026-12-18', avatarClass: 'bg-surface-container-highest text-on-surface' },
+      { id: 'anthropic-ml', role: 'Machine Learning Research Intern (LLMs)', company: 'Anthropic', domain: 'Data & AI', domainKey: 'ai', tagline: 'AI Safety & Alignment', location: 'San Francisco, CA', locationCode: 'sf', locationIcon: 'location_on', workStyle: 'office', remote: false, stipend: 65, durationWeeks: 14, benefit: '', postedAt: '2026-11-22', deadline: '2026-12-05', avatarClass: 'bg-on-tertiary-container text-on-tertiary' },
+      { id: 'notion-product', role: 'Associate Product Management Intern', company: 'Notion', domain: 'Product Management', domainKey: 'product', tagline: 'Workspace Platform', location: 'New York, NY (Hybrid)', locationCode: 'ny', locationIcon: 'apartment', workStyle: 'hybrid', remote: false, stipend: 48, durationWeeks: 12, benefit: '', postedAt: '2026-11-21', deadline: '2026-12-12', avatarClass: 'bg-secondary-container text-on-secondary' },
+      { id: 'spotify-growth', role: 'Brand & Content Growth Marketing Intern', company: 'Spotify', domain: 'Marketing & Growth', domainKey: 'marketing', tagline: 'Creator & Music Tech', location: 'New York, NY', locationCode: 'ny', locationIcon: 'location_on', workStyle: 'office', remote: false, stipend: 42, durationWeeks: 10, benefit: '', postedAt: '2026-11-20', deadline: '2026-12-20', avatarClass: 'bg-on-tertiary-container text-on-tertiary' }
+    ];
+    const feed = document.getElementById('cards-feed-wrapper');
+    const filterPills = Array.from(document.querySelectorAll('.filter-pill'));
+    const keywordInput = document.getElementById('keyword-search');
       const locationSelect = document.getElementById('location-select');
       const domainSelect = document.getElementById('domain-select');
       const stipendSelect = document.getElementById('min-stipend-select');
@@ -1091,13 +635,9 @@
       const visibleCount = document.getElementById('visible-count');
       const emptyState = document.getElementById('empty-state-preview');
       const skeleton = document.getElementById('skeleton-loader-preview');
-      const pagination = feed.lastElementChild;
-      pagination.classList.add('ih-pagination');
-      const pageLabel = pagination.querySelector(':scope > span');
-      const pageButtons = Array.from(pagination.querySelectorAll('button'));
-      const previousButton = pageButtons.find(button => button.textContent.includes('chevron_left'));
-      const nextButton = pageButtons.find(button => button.textContent.includes('chevron_right'));
-      const numberedButtons = pageButtons.filter(button => /^\d+$/.test(button.textContent.trim()));
+      const localDataError = document.getElementById('local-data-error');
+      const paginationControls = document.getElementById('pagination-controls');
+      const pageLabel = document.getElementById('internhub-page-label');
       const pageSize = 3;
       const modal = document.createElement('dialog');
       modal.id = 'internhub-dialog';
@@ -1118,9 +658,81 @@
       let selectedWorkStyle = '';
       let searchTimer;
 
-      const htmlEscape = value => String(value).replace(/[&<>"']/g, character => ({
-        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-      })[character]);
+      function htmlEscape(value) {
+        return String(value).replace(/[&<>"']/g, character => ({
+          '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        })[character]);
+      }
+
+      function formatDate(date) {
+        return new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })
+          .format(new Date(`${date}T00:00:00Z`));
+      }
+
+      function createInternshipCard(listing) {
+        const card = document.createElement('article');
+        card.className = 'job-card bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm hover:shadow-lg transition-all duration-200 flex flex-col justify-between gap-space-md group';
+        card.dataset.listingId = listing.id;
+        const benefitMarkup = listing.benefit
+          ? `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs">${htmlEscape(listing.benefit)}</span>`
+          : '';
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-space-md">
+            <div class="flex items-start gap-space-md min-w-0">
+              <div class="w-12 h-12 rounded-xl ${listing.avatarClass} flex items-center justify-center font-headline-sm font-bold shadow-md shrink-0">${htmlEscape(listing.company.slice(0, 1))}</div>
+              <div class="flex flex-col min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="font-label-md text-label-md text-on-surface font-bold">${htmlEscape(listing.company)}</span>
+                  <span class="material-symbols-outlined text-[16px] text-secondary" title="Verified Employer">verified</span>
+                  <span class="font-label-xs text-label-xs text-on-surface-variant">• ${htmlEscape(listing.tagline)}</span>
+                </div>
+                <h2 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors truncate mt-0.5">${htmlEscape(listing.role)}</h2>
+              </div>
+            </div>
+            <button aria-label="Save ${htmlEscape(listing.role)} at ${htmlEscape(listing.company)}" class="text-on-surface-variant hover:text-secondary p-1 rounded-lg hover:bg-surface-container transition-colors shrink-0" type="button">
+              <span class="material-symbols-outlined text-[22px]">bookmark_border</span>
+            </button>
+          </div>
+          <div class="flex flex-wrap items-center gap-space-xs">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs font-semibold">${htmlEscape(listing.domain)}</span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs"><span class="material-symbols-outlined text-[14px]">${htmlEscape(listing.locationIcon)}</span>${htmlEscape(listing.location)}</span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs"><span class="material-symbols-outlined text-[14px]">calendar_today</span>${listing.durationWeeks} Weeks</span>
+            ${benefitMarkup}
+          </div>
+          <div class="flex items-center justify-between pt-space-xs">
+            <div class="flex items-center gap-space-md">
+              <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-title-md text-title-md font-bold shadow-sm">$${listing.stipend} <span class="text-label-xs font-normal">/ hr</span></span>
+              <span class="font-label-xs text-label-xs text-on-surface-variant">Posted ${formatDate(listing.postedAt)} · Apply by ${formatDate(listing.deadline)}</span>
+            </div>
+            <div class="flex items-center gap-space-xs">
+              <a class="px-5 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-inverse-surface font-label-md text-label-md transition-all shadow-sm flex items-center gap-1" href="#quick-apply">
+                <span>Apply Now</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>`;
+        return card;
+      }
+
+      const dataIsValid = internshipListings.length > 0 &&
+        new Set(internshipListings.map(listing => listing.id)).size === internshipListings.length &&
+        internshipListings.every(listing =>
+        listing.id && listing.role && listing.company && listing.domain && listing.domainKey &&
+        listing.location && listing.locationCode && listing.workStyle &&
+        Number.isFinite(listing.stipend) && Number.isFinite(listing.durationWeeks) &&
+        Number.isFinite(Date.parse(listing.postedAt)) && Number.isFinite(Date.parse(listing.deadline))
+      );
+      const cards = dataIsValid ? internshipListings.map(createInternshipCard) : [];
+      const listingById = new Map(internshipListings.map(listing => [listing.id, listing]));
+      filterPills.forEach(pill => {
+        const badge = pill.querySelector('[data-domain-count]');
+        if (badge) {
+          const count = pill.dataset.filter === 'all'
+            ? internshipListings.length
+            : internshipListings.filter(listing => listing.domainKey === pill.dataset.filter).length;
+          badge.textContent = String(count);
+        }
+      });
+      cards.forEach(card => feed.insertBefore(card, skeleton));
       const notify = message => {
         toast.textContent = message;
         toast.hidden = false;
@@ -1209,17 +821,17 @@
       }
 
       function showDetails(card) {
-        const company = card.querySelector('.font-label-md').textContent.trim();
-        const title = card.querySelector('h2').textContent.trim();
-        const metadata = Array.from(card.children[1].querySelectorAll(':scope > span')).map(item => item.textContent.replace(/\s+/g, ' ').trim());
-        const pay = card.querySelector('.bg-tertiary-fixed').textContent.replace(/\s+/g, ' ').trim();
-        openModal(`<h2 id="ih-dialog-title">${htmlEscape(title)}</h2>
+        const listing = listingById.get(card.dataset.listingId);
+        openModal(`<h2 id="ih-dialog-title">${htmlEscape(listing.role)}</h2>
           <dl class="ih-detail-list">
-            <div><dt>Company</dt><dd>${htmlEscape(company)}</dd></div>
-            <div><dt>Domain</dt><dd>${htmlEscape(metadata[0] || 'Not specified')}</dd></div>
-            <div><dt>Location</dt><dd>${htmlEscape(metadata[1] || 'Not specified')}</dd></div>
-            <div><dt>Duration</dt><dd>${htmlEscape(metadata[2] || 'Not specified')}</dd></div>
-            <div><dt>Stipend</dt><dd>${htmlEscape(pay)}</dd></div>
+            <div><dt>Company</dt><dd>${htmlEscape(listing.company)}</dd></div>
+            <div><dt>Domain</dt><dd>${htmlEscape(listing.domain)}</dd></div>
+            <div><dt>Location</dt><dd>${htmlEscape(listing.location)}</dd></div>
+            <div><dt>Duration</dt><dd>${listing.durationWeeks} weeks</dd></div>
+            <div><dt>Stipend</dt><dd>$${listing.stipend} / hr</dd></div>
+            <div><dt>Posted</dt><dd>${formatDate(listing.postedAt)}</dd></div>
+            <div><dt>Application deadline</dt><dd>${formatDate(listing.deadline)}</dd></div>
+            ${listing.benefit ? `<div><dt>Additional benefit</dt><dd>${htmlEscape(listing.benefit)}</dd></div>` : ''}
           </dl>
           <p class="ih-demo-note">Listing details are sample content in this front-end demo.</p>
           <button class="ih-submit" type="button" data-apply-from-details>Open application form</button>`);
@@ -1243,106 +855,64 @@
         openModal(`<h2 id="ih-dialog-title">${htmlEscape(title)}</h2><p>${htmlEscape(description)}</p><p class="ih-demo-note">This single-page demo does not include separate content pages or a backend service.</p>`);
       }
 
-      function matchDomain(card, domain) {
-        if (domain === 'all') return true;
-        const label = card.children[1].querySelector(':scope > span')?.textContent.toLowerCase() || '';
-        const group = {
-          swe: ['software engineering', 'frontend'],
-          design: ['design', 'ui/ux'],
-          data: ['data', 'ai', 'machine learning'],
-          product: ['product management'],
-          marketing: ['marketing', 'growth']
-        }[domain] || [];
-        return group.some(term => label.includes(term) || card.querySelector('h2').textContent.toLowerCase().includes(term));
-      }
-
-      function cardMatches(card) {
-        const text = card.textContent.toLowerCase();
+      function listingMatches(listing) {
         const query = keywordInput.value.trim().toLowerCase();
         const domain = document.querySelector('.filter-pill.active')?.dataset.filter || 'all';
+        const selectedDomain = domainSelect.value === 'data' ? 'ai' : domainSelect.value;
         const location = locationSelect.value;
-        const selectedDomain = domainSelect.value;
-        const pay = Number(card.querySelector('.bg-tertiary-fixed').textContent.match(/\d+/)?.[0] || 0);
-        const metadata = Array.from(card.children[1].querySelectorAll(':scope > span')).map(item => item.textContent.toLowerCase());
-        const locationText = metadata[1] || '';
-        const durationText = metadata[2] || '';
-        const weeks = Number(durationText.match(/(\d+)\s*weeks?/i)?.[1] || 0);
+        const searchText = `${listing.role} ${listing.company}`.toLowerCase();
 
-        if (query && !text.includes(query)) return false;
-        if (!matchDomain(card, domain) || !matchDomain(card, selectedDomain)) return false;
-        if (location === 'remote' && !locationText.includes('remote')) return false;
-        if (location === 'sf' && !locationText.includes('san francisco') && !locationText.includes('sf hub')) return false;
-        if (location === 'ny' && !locationText.includes('new york')) return false;
-        if (location === 'sea' && !locationText.includes('seattle')) return false;
-        if (remoteToggle.checked && !locationText.includes('remote')) return false;
-        if (selectedWorkStyle === 'hybrid' && !locationText.includes('hybrid')) return false;
-        if (selectedWorkStyle === 'office' && (locationText.includes('remote') || locationText.includes('hybrid'))) return false;
-        if (pay < Number(stipendSelect.value || 0)) return false;
-        if (durationSelect.value === '8-12' && !(weeks >= 8 && weeks <= 12)) return false;
-        if (durationSelect.value === '12plus' && weeks < 12) return false;
+        if (query && !searchText.includes(query)) return false;
+        if (domain !== 'all' && listing.domainKey !== domain) return false;
+        if (selectedDomain !== 'all' && listing.domainKey !== selectedDomain) return false;
+        if (location === 'remote' && !listing.remote) return false;
+        if (location !== 'all' && location !== 'remote' && listing.locationCode !== location) return false;
+        if (remoteToggle.checked && !listing.remote) return false;
+        if (selectedWorkStyle && listing.workStyle !== selectedWorkStyle) return false;
+        if (listing.stipend < Number(stipendSelect.value || 0)) return false;
+        if (durationSelect.value === '8-12' && !(listing.durationWeeks >= 8 && listing.durationWeeks <= 12)) return false;
+        if (durationSelect.value === '12plus' && listing.durationWeeks < 12) return false;
         return true;
       }
 
-      function deadlineTimestamp(card) {
-        const match = card.textContent.match(/Apply by ([A-Za-z]+) (\d{1,2})/i)
-          || card.textContent.match(/Deadline: ([A-Za-z]+) (\d{1,2})/i);
-        return match ? Date.parse(`${match[1]} ${match[2]} 2000`) : Infinity;
-      }
-
-      function sortCards(items) {
+      function sortListings(items) {
         const mode = sortSelect.value;
-        if (mode === 'stipend') {
-          return items.sort((a, b) => Number(b.querySelector('.bg-tertiary-fixed').textContent.match(/\d+/)?.[0] || 0) - Number(a.querySelector('.bg-tertiary-fixed').textContent.match(/\d+/)?.[0] || 0));
-        }
-        if (mode === 'recent') {
-          return items.sort((a, b) => {
-            const age = card => {
-              const match = card.textContent.match(/Posted\s+(\d+)\s*(h|d|w) ago/i);
-              if (!match) return Infinity;
-              return Number(match[1]) * ({ h: 1, d: 24, w: 168 }[match[2].toLowerCase()]);
-            };
-            return age(a) - age(b);
-          });
-        }
-        const datedCards = items.filter(card => Number.isFinite(deadlineTimestamp(card)));
-        if (datedCards.length < items.length) notify('Listings without a published deadline appear after dated listings.');
-        return items.sort((a, b) => deadlineTimestamp(a) - deadlineTimestamp(b));
+        return [...items].sort((a, b) => {
+          if (mode === 'stipend') return b.stipend - a.stipend;
+          if (mode === 'deadline') return Date.parse(a.deadline) - Date.parse(b.deadline);
+          return Date.parse(b.postedAt) - Date.parse(a.postedAt);
+        });
       }
 
       function renderListings() {
-        const matching = sortCards(cards.filter(cardMatches));
+        localDataError.classList.toggle('hidden', dataIsValid);
+        const matching = dataIsValid ? sortListings(internshipListings.filter(listingMatches)) : [];
         const totalPages = Math.max(1, Math.ceil(matching.length / pageSize));
         currentPage = Math.min(currentPage, totalPages);
-        [...matching, ...cards.filter(card => !matching.includes(card))].forEach(card => feed.insertBefore(card, skeleton));
+        const orderedCards = matching.map(listing => cards.find(card => card.dataset.listingId === listing.id));
+        [...orderedCards, ...cards.filter(card => !orderedCards.includes(card))].forEach(card => feed.insertBefore(card, skeleton));
         const start = (currentPage - 1) * pageSize;
-        const pageCards = matching.slice(start, start + pageSize);
-        cards.forEach(card => card.classList.toggle('hidden', previewMode !== 'normal' || !pageCards.includes(card)));
+        const pageCards = new Set(matching.slice(start, start + pageSize).map(listing => listing.id));
+        cards.forEach(card => card.classList.toggle('hidden', previewMode !== 'normal' || !pageCards.has(card.dataset.listingId)));
         skeleton.classList.toggle('hidden', previewMode !== 'loading');
         skeleton.classList.toggle('flex', previewMode === 'loading');
-        emptyState.classList.toggle('hidden', previewMode !== 'empty' && (previewMode !== 'normal' || matching.length > 0));
-        emptyState.classList.toggle('flex', previewMode === 'empty' || (previewMode === 'normal' && matching.length === 0));
+        document.getElementById('btn-preview-loading').textContent = previewMode === 'loading' ? 'Hide Loading State' : 'Preview Loading State';
+        const showEmptyState = dataIsValid && (previewMode === 'empty' || (previewMode === 'normal' && matching.length === 0));
+        emptyState.classList.toggle('hidden', !showEmptyState);
+        emptyState.classList.toggle('flex', showEmptyState);
         visibleCount.textContent = String(matching.length);
         pageLabel.textContent = `Page ${currentPage} of ${totalPages}`;
-        numberedButtons.forEach((button, index) => {
+        const pageButtonClass = 'px-3 py-1 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm hover:bg-surface-container-high transition-colors';
+        const pageButtonsMarkup = Array.from({ length: totalPages }, (_, index) => {
           const page = index + 1;
-          button.hidden = page > totalPages;
-          button.disabled = page > totalPages;
-          button.setAttribute('aria-current', page === currentPage ? 'page' : 'false');
-        });
-        previousButton.disabled = currentPage <= 1;
-        nextButton.disabled = currentPage >= totalPages;
-        const ellipsis = pagination.querySelector('span.text-label-sm');
-        if (ellipsis) ellipsis.hidden = totalPages <= numberedButtons.length;
+          const active = page === currentPage;
+          return `<button aria-label="Page ${page}" aria-current="${active ? 'page' : 'false'}" class="${pageButtonClass}" data-page="${page}" type="button">${page}</button>`;
+        }).join('');
+        paginationControls.innerHTML = `
+          <button aria-label="Previous page" class="p-2 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" data-page-action="previous" ${currentPage <= 1 ? 'disabled' : ''} type="button"><span aria-hidden="true" class="material-symbols-outlined text-[18px]">chevron_left</span></button>
+          ${pageButtonsMarkup}
+          <button aria-label="Next page" class="p-2 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" data-page-action="next" ${currentPage >= totalPages ? 'disabled' : ''} type="button"><span aria-hidden="true" class="material-symbols-outlined text-[18px]">chevron_right</span></button>`;
       }
-
-      window.applyInternHubFilters = function () {
-        previewMode = 'normal';
-        currentPage = 1;
-        renderListings();
-      };
-      window.syncInternHubDomain = function (domain) {
-        domainSelect.value = domain === 'ai' ? 'data' : domain;
-      };
 
       window.toggleInternHubBookmark = function (button) {
         const card = button.closest('.job-card');
@@ -1352,6 +922,7 @@
         icon.textContent = isSaved ? 'bookmark_border' : 'bookmark';
         button.classList.toggle('text-secondary', !isSaved);
         button.setAttribute('aria-label', `${isSaved ? 'Save' : 'Remove'} ${title} ${isSaved ? 'internship' : 'bookmark'}`);
+        button.setAttribute('aria-pressed', String(!isSaved));
         const key = card.dataset.internhubBookmarkKey;
         try {
           const saved = new Set(JSON.parse(localStorage.getItem('internhub-bookmarks') || '[]'));
@@ -1363,25 +934,25 @@
         }
       };
 
-      cards.forEach((card, index) => {
+      cards.forEach(card => {
         const title = card.querySelector('h2');
-        const company = card.querySelector('.font-label-md').textContent.trim();
         const bookmark = card.querySelector('button[aria-label^="Save"]');
-        card.dataset.internhubBookmarkKey = `${company}:${title.textContent.trim()}`;
+        card.dataset.internhubBookmarkKey = card.dataset.listingId;
         title.setAttribute('role', 'button');
         title.setAttribute('tabindex', '0');
         title.setAttribute('aria-label', `View details for ${title.textContent.trim()}`);
+        bookmark.setAttribute('aria-pressed', 'false');
         try {
           const saved = new Set(JSON.parse(localStorage.getItem('internhub-bookmarks') || '[]'));
           if (saved.has(card.dataset.internhubBookmarkKey)) {
             bookmark.querySelector('.material-symbols-outlined').textContent = 'bookmark';
             bookmark.classList.add('text-secondary');
             bookmark.setAttribute('aria-label', `Remove ${title.textContent.trim()} bookmark`);
+            bookmark.setAttribute('aria-pressed', 'true');
           }
         } catch (error) {
           notify('Saved bookmarks could not be loaded from browser storage.');
         }
-        card.dataset.originalOrder = String(index);
       });
 
       const routeTargets = {
@@ -1418,6 +989,12 @@
       });
 
       document.addEventListener('click', event => {
+        const bookmarkButton = event.target.closest('.job-card button[aria-label^="Save"], .job-card button[aria-label^="Remove"]');
+        if (bookmarkButton) {
+          window.toggleInternHubBookmark(bookmarkButton);
+          return;
+        }
+
         const pathLink = event.target.closest('a[data-path]');
         if (pathLink) {
           const path = pathLink.dataset.path;
@@ -1502,6 +1079,26 @@
         document.getElementById('feed-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
       document.getElementById('search-btn').addEventListener('click', () => searchForm.requestSubmit());
+      function updateDomainPills(domain) {
+        filterPills.forEach(pill => {
+          const active = pill.dataset.filter === domain;
+          pill.classList.toggle('active', active);
+          pill.classList.toggle('bg-secondary', active);
+          pill.classList.toggle('text-on-secondary', active);
+          pill.classList.toggle('shadow-sm', active);
+          pill.classList.toggle('bg-surface-container-low', !active);
+          pill.classList.toggle('text-on-surface-variant', !active);
+          pill.setAttribute('aria-pressed', String(active));
+        });
+      }
+      filterPills.forEach(pill => pill.addEventListener('click', () => {
+        const domain = pill.dataset.filter;
+        domainSelect.value = domain === 'ai' ? 'data' : domain;
+        updateDomainPills(domain);
+        currentPage = 1;
+        previewMode = 'normal';
+        renderListings();
+      }));
       [locationSelect, domainSelect, stipendSelect, durationSelect, remoteToggle, sortSelect].forEach(control => {
         control.addEventListener('change', () => {
           if (control === remoteToggle) {
@@ -1510,16 +1107,7 @@
           }
           if (control === domainSelect) {
             const domain = domainSelect.value === 'data' ? 'ai' : domainSelect.value;
-            filterPills.forEach(pill => {
-              const active = pill.dataset.filter === domain;
-              pill.classList.toggle('active', active);
-              pill.classList.toggle('bg-secondary', active);
-              pill.classList.toggle('text-on-secondary', active);
-              pill.classList.toggle('shadow-sm', active);
-              pill.classList.toggle('bg-surface-container-low', !active);
-              pill.classList.toggle('text-on-surface-variant', !active);
-              pill.setAttribute('aria-pressed', String(active));
-            });
+            updateDomainPills(domain);
           }
           currentPage = 1;
           previewMode = 'normal';
@@ -1547,19 +1135,10 @@
         sortSelect.value = 'recent';
         selectedWorkStyle = '';
         document.querySelectorAll('[data-work-style]').forEach(button => button.classList.remove('ih-work-style-active'));
-        document.querySelectorAll('aside input[type="checkbox"]').forEach((input, index) => {
-          input.checked = index < 2;
-        });
-        filterPills.forEach((pill, index) => {
-          const active = index === 0;
-          pill.classList.toggle('active', active);
-          pill.classList.toggle('bg-secondary', active);
-          pill.classList.toggle('text-on-secondary', active);
-          pill.classList.toggle('shadow-sm', active);
-          pill.classList.toggle('bg-surface-container-low', !active);
-          pill.classList.toggle('text-on-surface-variant', !active);
-          pill.setAttribute('aria-pressed', String(active));
-        });
+        document.querySelectorAll('aside input[type="checkbox"]').forEach(input => { input.checked = false; });
+        workButtons.forEach(button => button.setAttribute('aria-pressed', 'false'));
+        document.getElementById('btn-preview-loading').textContent = 'Preview Loading State';
+        updateDomainPills('all');
         previewMode = 'normal';
         currentPage = 1;
         renderListings();
@@ -1570,9 +1149,14 @@
         const label = button.textContent.trim();
         const value = label === '100% Remote' ? 'remote' : label === 'Hybrid Allowed' ? 'hybrid' : 'office';
         button.dataset.workStyle = value;
+        button.setAttribute('aria-pressed', 'false');
         button.addEventListener('click', () => {
           selectedWorkStyle = selectedWorkStyle === value ? '' : value;
-          workButtons.forEach(item => item.classList.toggle('ih-work-style-active', item.dataset.workStyle === selectedWorkStyle));
+          workButtons.forEach(item => {
+            const active = item.dataset.workStyle === selectedWorkStyle;
+            item.classList.toggle('ih-work-style-active', active);
+            item.setAttribute('aria-pressed', String(active));
+          });
           if (value === 'remote') remoteToggle.checked = selectedWorkStyle === 'remote';
           else remoteToggle.checked = false;
           currentPage = 1;
@@ -1585,22 +1169,22 @@
       });
 
       document.getElementById('btn-preview-loading').addEventListener('click', event => {
-        previewMode = event.currentTarget.textContent.includes('Hide') ? 'loading' : 'normal';
+        previewMode = previewMode === 'loading' ? 'normal' : 'loading';
         renderListings();
       });
       document.getElementById('btn-preview-empty').addEventListener('click', () => {
         previewMode = 'empty';
         renderListings();
       });
-      pageButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          if (button === previousButton) currentPage = Math.max(1, currentPage - 1);
-          else if (button === nextButton) currentPage++;
-          else if (/^\d+$/.test(button.textContent.trim())) currentPage = Number(button.textContent.trim());
-          previewMode = 'normal';
-          renderListings();
-          document.getElementById('feed-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
+      paginationControls.addEventListener('click', event => {
+        const button = event.target.closest('button');
+        if (!button || button.disabled) return;
+        if (button.dataset.pageAction === 'previous') currentPage = Math.max(1, currentPage - 1);
+        else if (button.dataset.pageAction === 'next') currentPage += 1;
+        else if (button.dataset.page) currentPage = Number(button.dataset.page);
+        previewMode = 'normal';
+        renderListings();
+        document.getElementById('feed-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
 
       modal.addEventListener('change', event => {
@@ -1659,11 +1243,6 @@
           : 'Demo only: listing details validated. Nothing was posted or stored.', 'success');
       });
 
-      document.getElementById('sort-dropdown').addEventListener('change', () => {
-        if (sortSelect.value === 'deadline' && !cards.some(card => Number.isFinite(deadlineTimestamp(card)))) {
-          notify('No application deadlines are present in the sample listings.');
-        }
-      });
       renderListings();
     });
   </script>
