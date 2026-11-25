@@ -69,7 +69,7 @@
       header > div > div:first-child { gap: .5rem !important; }
       header > div > div:last-child { gap: .25rem !important; }
       header button[aria-label="Search listings"],
-      header a[data-path="post-an-internship"],
+      header > div > div:last-child > a[data-path="post-an-internship"],
       header > div > div:last-child > div { display: none !important; }
       header a[data-path="sign-up"] { padding-inline: .75rem !important; }
       header nav { padding-inline: 1rem; }
@@ -96,7 +96,7 @@
 
     @media (min-width: 640px) and (max-width: 767px) {
       header button[aria-label="Search listings"],
-      header a[data-path="post-an-internship"] { display: none !important; }
+      header > div > div:last-child > a[data-path="post-an-internship"] { display: none !important; }
       section.relative.w-full.max-w-7xl h1 { font-size: 2.75rem; line-height: 1.12; }
     }
 
@@ -110,6 +110,95 @@
 
     @media (min-width: 1280px) {
       section.relative.w-full.max-w-7xl h1 { font-size: clamp(3rem, 3.5vw, 4rem); }
+    }
+    .ih-dialog {
+      width: min(94vw, 34rem);
+      max-width: 34rem;
+      max-height: min(90vh, 48rem);
+      padding: 0;
+      border: 0;
+      border-radius: 1.25rem;
+      color: #0b1c30;
+      background: #ffffff;
+      box-shadow: 0 24px 80px rgba(11, 28, 48, .25);
+      overflow: auto;
+    }
+    .ih-dialog::backdrop { background: rgba(11, 28, 48, .55); backdrop-filter: blur(3px); }
+    .ih-dialog-content { padding: clamp(1.25rem, 5vw, 2rem); }
+    .ih-dialog-close {
+      float: right;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 0;
+      border-radius: .75rem;
+      background: #eff4ff;
+      color: #45464d;
+      cursor: pointer;
+    }
+    .ih-dialog h2 { margin: 0 3rem 1.25rem 0; font-size: 1.5rem; line-height: 1.3; }
+    .ih-form { clear: both; display: grid; gap: .9rem; }
+    .ih-form label { display: grid; gap: .35rem; font-size: .875rem; font-weight: 600; }
+    .ih-form input, .ih-form select, .ih-form textarea {
+      width: 100%;
+      min-width: 0;
+      border: 1px solid #c6c6cd;
+      border-radius: .65rem;
+      padding: .75rem .85rem;
+      color: #0b1c30;
+      background: #fff;
+      font: inherit;
+    }
+    .ih-form textarea { min-height: 6rem; resize: vertical; }
+    .ih-password-row { display: flex; align-items: center; gap: .5rem; font-size: .875rem; }
+    .ih-password-row input { width: auto; }
+    .ih-submit {
+      border: 0;
+      border-radius: .75rem;
+      padding: .85rem 1rem;
+      color: #fff;
+      background: #4648d4;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .ih-message { min-height: 1.25rem; margin: 0; font-size: .875rem; }
+    .ih-message[data-state="error"] { color: #ba1a1a; }
+    .ih-message[data-state="success"] { color: #005137; }
+    .ih-detail-list { display: grid; gap: .65rem; margin: 0 0 1.25rem; }
+    .ih-detail-list div { display: flex; justify-content: space-between; gap: 1rem; padding: .7rem; border-radius: .7rem; background: #eff4ff; }
+    .ih-demo-note { margin: .25rem 0 0; color: #45464d; font-size: .8rem; line-height: 1.5; }
+    .ih-toast {
+      position: fixed;
+      z-index: 100;
+      inset: auto 1rem 1rem;
+      width: fit-content;
+      max-width: min(36rem, calc(100vw - 2rem));
+      margin-inline: auto;
+      padding: .85rem 1rem;
+      border-radius: .75rem;
+      color: #fff;
+      background: #131b2e;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .2);
+      font-size: .875rem;
+    }
+    .ih-pagination button[aria-current="page"] { background: #4648d4; color: #fff; }
+    .ih-pagination button:disabled { opacity: .45; cursor: not-allowed; }
+    .ih-work-style-active { outline: 2px solid #4648d4; }
+    .job-card h2[role="button"] { cursor: pointer; }
+    #home, #feed-container, #cards-feed-wrapper, #footer-resources, #footer-about { scroll-margin-top: 5.5rem; }
+    @media (max-width: 767px) {
+      header nav a[data-path="login"],
+      header nav a[data-path="post-an-internship"] {
+        display: inline-flex !important;
+        flex: 0 0 auto;
+      }
+    }
+    @media (max-width: 1279px) {
+      #home, #feed-container, #cards-feed-wrapper, #footer-resources, #footer-about { scroll-margin-top: 8.5rem; }
+    }
+    @media (max-width: 639px) {
+      .ih-dialog { width: calc(100vw - 1.5rem); max-height: 92vh; }
+      .ih-detail-list div { flex-direction: column; gap: .2rem; }
     }
   </style></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-10"><a class="flex items-center gap-space-sm group focus:outline-none" data-path="home" href="#"><div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-secondary to-secondary-container flex items-center justify-center text-on-secondary shadow-[0_4px_12px_rgba(70,72,212,0.25)] transition-transform group-hover:scale-105"><span class="material-symbols-outlined text-[22px]">mobile_code</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight leading-none">Intern<span class="text-secondary">Hub</span></span><span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-widest mt-1">Career OS</span></div></a><nav class="hidden lg:flex items-center gap-space-lg" data-active-classes="text-secondary font-bold"><a aria-current="page" class="transition-colors py-space-xs text-secondary font-bold" data-path="home" href="#">Home</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors py-space-xs" data-path="explore-internships" href="#">Explore Internships</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors py-space-xs" data-path="companies" href="#">Companies</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors py-space-xs" data-path="career-guide" href="#">Career Guide</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors py-space-xs" data-path="about" href="#">About</a></nav></div><div class="flex items-center gap-space-md"><button aria-label="Search listings" class="p-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors focus:outline-none" type="button"><span class="material-symbols-outlined text-[22px]">search</span></button><a class="hidden sm:inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-surface-container-low text-secondary font-label-md text-label-md hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-colors" data-path="post-an-internship" href="#"><span class="material-symbols-outlined text-[18px]">add_circle</span>Post an Internship</a><a class="hidden md:inline-flex items-center px-space-md py-2.5 rounded-lg text-on-surface font-label-md text-label-md hover:bg-surface-container-low transition-colors" data-path="login" href="#">Login</a><a class="inline-flex items-center justify-center px-space-lg py-2.5 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md shadow-[0_2px_8px_rgba(70,72,212,0.2)] hover:bg-secondary/90 transition-all" data-path="sign-up" href="#">Sign Up</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface flex-1"><div class="flex flex-col w-full">
 <!-- Subtle decorative ambient orbs -->
@@ -303,7 +392,7 @@
 <select class="bg-transparent font-label-sm text-label-sm font-semibold text-on-surface focus:outline-none cursor-pointer" id="min-stipend-select">
 <option value="0">Any Wage</option>
 <option value="40">$40+ / hr</option>
-<option selected="" value="50">$50+ / hr</option>
+<option value="50">$50+ / hr</option>
 <option value="60">$60+ / hr</option>
 </select>
 </div>
@@ -865,6 +954,12 @@
       });
 
       function filterDomain(domain) {
+        if (typeof window.applyInternHubFilters === 'function') {
+          if (typeof window.syncInternHubDomain === 'function') window.syncInternHubDomain(domain);
+          window.applyInternHubFilters();
+          return;
+        }
+
         // Reset state views
         emptyState.classList.add('hidden');
         emptyState.classList.remove('flex');
@@ -950,7 +1045,7 @@
           }
         });
 
-        if (minStipendSelect) minStipendSelect.value = '50';
+        if (minStipendSelect) minStipendSelect.value = '0';
         if (remoteToggle) remoteToggle.checked = false;
         if (btnPreviewLoading) btnPreviewLoading.textContent = 'Preview Loading State';
         loadingActive = false;
@@ -965,6 +1060,10 @@
       bookmarkButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
+          if (typeof window.toggleInternHubBookmark === 'function') {
+            window.toggleInternHubBookmark(btn);
+            return;
+          }
           const icon = btn.querySelector('.material-symbols-outlined');
           if (icon.textContent === 'bookmark_border') {
             icon.textContent = 'bookmark';
@@ -976,5 +1075,596 @@
         });
       });
     })();
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function initInternHubFeatures() {
+      const cards = Array.from(document.querySelectorAll('.job-card'));
+      const feed = document.getElementById('cards-feed-wrapper');
+      const filterPills = Array.from(document.querySelectorAll('.filter-pill'));
+      const keywordInput = document.getElementById('keyword-search');
+      const locationSelect = document.getElementById('location-select');
+      const domainSelect = document.getElementById('domain-select');
+      const stipendSelect = document.getElementById('min-stipend-select');
+      const durationSelect = document.getElementById('duration-select');
+      const remoteToggle = document.getElementById('remote-toggle');
+      const sortSelect = document.getElementById('sort-dropdown');
+      const visibleCount = document.getElementById('visible-count');
+      const emptyState = document.getElementById('empty-state-preview');
+      const skeleton = document.getElementById('skeleton-loader-preview');
+      const pagination = feed.lastElementChild;
+      pagination.classList.add('ih-pagination');
+      const pageLabel = pagination.querySelector(':scope > span');
+      const pageButtons = Array.from(pagination.querySelectorAll('button'));
+      const previousButton = pageButtons.find(button => button.textContent.includes('chevron_left'));
+      const nextButton = pageButtons.find(button => button.textContent.includes('chevron_right'));
+      const numberedButtons = pageButtons.filter(button => /^\d+$/.test(button.textContent.trim()));
+      const pageSize = 3;
+      const modal = document.createElement('dialog');
+      modal.id = 'internhub-dialog';
+      modal.className = 'ih-dialog';
+      modal.setAttribute('aria-labelledby', 'ih-dialog-title');
+      modal.innerHTML = '<div class="ih-dialog-content"><button class="ih-dialog-close" type="button" aria-label="Close dialog"><span class="material-symbols-outlined">close</span></button><div id="ih-dialog-body"></div></div>';
+      document.body.append(modal);
+      const modalBody = modal.querySelector('#ih-dialog-body');
+      const toast = document.createElement('div');
+      toast.className = 'ih-toast';
+      toast.setAttribute('role', 'status');
+      toast.setAttribute('aria-live', 'polite');
+      toast.hidden = true;
+      document.body.append(toast);
+      let toastTimer;
+      let currentPage = 1;
+      let previewMode = 'normal';
+      let selectedWorkStyle = '';
+      let searchTimer;
+
+      const htmlEscape = value => String(value).replace(/[&<>"']/g, character => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      })[character]);
+      const notify = message => {
+        toast.textContent = message;
+        toast.hidden = false;
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => { toast.hidden = true; }, 4000);
+      };
+      const openModal = content => {
+        modalBody.innerHTML = content;
+        if (!modal.open) modal.showModal();
+      };
+      const closeModal = () => { if (modal.open) modal.close(); };
+
+      modal.querySelector('.ih-dialog-close').addEventListener('click', closeModal);
+      modal.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          closeModal();
+        }
+      });
+      modal.addEventListener('click', event => {
+        if (event.target === modal) closeModal();
+      });
+
+      const showPasswordToggle = id => `<label class="ih-password-row"><input type="checkbox" data-show-password="${id}"/> Show password</label>`;
+      const statusMarkup = '<p class="ih-message" aria-live="polite"></p>';
+      const formHeader = (title, description) => `<h2 id="ih-dialog-title">${title}</h2><p class="ih-demo-note">${description}</p>`;
+      const field = (label, name, type, options = '') => `<label>${label}<input name="${name}" type="${type}" ${options}/></label>`;
+      const passwordField = (label, name, autocomplete) => `<label>${label}<input name="${name}" type="password" minlength="8" autocomplete="${autocomplete}" required/></label>`;
+      const setFormMessage = (form, message, state) => {
+        const status = form.querySelector('.ih-message');
+        status.textContent = message;
+        status.dataset.state = state;
+      };
+
+      function showLogin() {
+        openModal(`${formHeader('Login', 'Demo only: this page has no authentication backend. No account will be signed in.') }
+          <form class="ih-form" data-demo-form="login" novalidate>
+            ${field('Email', 'email', 'email', 'autocomplete="email" required')}
+            ${passwordField('Password', 'password', 'current-password')}
+            ${showPasswordToggle('password')}
+            ${statusMarkup}
+            <button class="ih-submit" type="submit">Continue</button>
+          </form>`);
+      }
+
+      function showSignup() {
+        openModal(`${formHeader('Create your account', 'Demo only: details are validated in this browser; no account is created or stored.') }
+          <form class="ih-form" data-demo-form="signup" novalidate>
+            ${field('Full name', 'name', 'text', 'autocomplete="name" minlength="2" required')}
+            ${field('Email', 'email', 'email', 'autocomplete="email" required')}
+            ${passwordField('Password (at least 8 characters)', 'password', 'new-password')}
+            ${passwordField('Confirm password', 'confirmPassword', 'new-password')}
+            ${showPasswordToggle('password')}
+            ${showPasswordToggle('confirmPassword')}
+            ${statusMarkup}
+            <button class="ih-submit" type="submit">Create account</button>
+          </form>`);
+      }
+
+      function showPostForm() {
+        openModal(`${formHeader('Post an Internship', 'Demo only: this listing is not sent to an employer or saved to a database.') }
+          <form class="ih-form" data-demo-form="post" novalidate>
+            ${field('Company', 'company', 'text', 'required')}
+            ${field('Role title', 'role', 'text', 'required')}
+            ${field('Contact email', 'email', 'email', 'autocomplete="email" required')}
+            <label>Location<select name="location" required><option value="">Choose a location</option><option>Remote</option><option>San Francisco, CA</option><option>New York, NY</option><option>Seattle, WA</option></select></label>
+            <label>Internship details<textarea name="details" minlength="20" required></textarea></label>
+            ${statusMarkup}
+            <button class="ih-submit" type="submit">Validate listing</button>
+          </form>`);
+      }
+
+      function showApplication(card) {
+        const company = card.querySelector('.font-label-md').textContent.trim();
+        const title = card.querySelector('h2').textContent.trim();
+        openModal(`${formHeader('Apply to ' + htmlEscape(company), 'Demo only: your application is not sent or stored because no application backend is connected.') }
+          <p><strong>${htmlEscape(title)}</strong></p>
+          <form class="ih-form" data-demo-form="application" novalidate>
+            ${field('Full name', 'name', 'text', 'autocomplete="name" minlength="2" required')}
+            ${field('Email', 'email', 'email', 'autocomplete="email" required')}
+            ${field('Portfolio or profile URL (optional)', 'portfolio', 'url', 'placeholder="https://"')}
+            <label>Note to the hiring team (optional)<textarea name="note" maxlength="1000"></textarea></label>
+            ${statusMarkup}
+            <button class="ih-submit" type="submit">Validate application</button>
+          </form>`);
+      }
+
+      function showDetails(card) {
+        const company = card.querySelector('.font-label-md').textContent.trim();
+        const title = card.querySelector('h2').textContent.trim();
+        const metadata = Array.from(card.children[1].querySelectorAll(':scope > span')).map(item => item.textContent.replace(/\s+/g, ' ').trim());
+        const pay = card.querySelector('.bg-tertiary-fixed').textContent.replace(/\s+/g, ' ').trim();
+        openModal(`<h2 id="ih-dialog-title">${htmlEscape(title)}</h2>
+          <dl class="ih-detail-list">
+            <div><dt>Company</dt><dd>${htmlEscape(company)}</dd></div>
+            <div><dt>Domain</dt><dd>${htmlEscape(metadata[0] || 'Not specified')}</dd></div>
+            <div><dt>Location</dt><dd>${htmlEscape(metadata[1] || 'Not specified')}</dd></div>
+            <div><dt>Duration</dt><dd>${htmlEscape(metadata[2] || 'Not specified')}</dd></div>
+            <div><dt>Stipend</dt><dd>${htmlEscape(pay)}</dd></div>
+          </dl>
+          <p class="ih-demo-note">Listing details are sample content in this front-end demo.</p>
+          <button class="ih-submit" type="button" data-apply-from-details>Open application form</button>`);
+        modal.querySelector('[data-apply-from-details]').addEventListener('click', () => showApplication(card));
+      }
+
+      function showCohorts() {
+        const companies = cards.map(card => card.querySelector('.font-label-md').textContent.trim()).join(', ');
+        openModal(`<h2 id="ih-dialog-title">Featured internship cohorts</h2>
+          <p>Explore the sample summer opportunities currently shown in the feed:</p>
+          <p><strong>${htmlEscape(companies)}</strong></p>
+          <p class="ih-demo-note">These are the six sample listings in this page. Live cohort availability requires a connected listings service.</p>
+          <button class="ih-submit" type="button" data-go-to-feed>Explore listings</button>`);
+        modal.querySelector('[data-go-to-feed]').addEventListener('click', () => {
+          closeModal();
+          document.getElementById('feed-container').scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+
+      function showInformation(title, description) {
+        openModal(`<h2 id="ih-dialog-title">${htmlEscape(title)}</h2><p>${htmlEscape(description)}</p><p class="ih-demo-note">This single-page demo does not include separate content pages or a backend service.</p>`);
+      }
+
+      function matchDomain(card, domain) {
+        if (domain === 'all') return true;
+        const label = card.children[1].querySelector(':scope > span')?.textContent.toLowerCase() || '';
+        const group = {
+          swe: ['software engineering', 'frontend'],
+          design: ['design', 'ui/ux'],
+          data: ['data', 'ai', 'machine learning'],
+          product: ['product management'],
+          marketing: ['marketing', 'growth']
+        }[domain] || [];
+        return group.some(term => label.includes(term) || card.querySelector('h2').textContent.toLowerCase().includes(term));
+      }
+
+      function cardMatches(card) {
+        const text = card.textContent.toLowerCase();
+        const query = keywordInput.value.trim().toLowerCase();
+        const domain = document.querySelector('.filter-pill.active')?.dataset.filter || 'all';
+        const location = locationSelect.value;
+        const selectedDomain = domainSelect.value;
+        const pay = Number(card.querySelector('.bg-tertiary-fixed').textContent.match(/\d+/)?.[0] || 0);
+        const metadata = Array.from(card.children[1].querySelectorAll(':scope > span')).map(item => item.textContent.toLowerCase());
+        const locationText = metadata[1] || '';
+        const durationText = metadata[2] || '';
+        const weeks = Number(durationText.match(/(\d+)\s*weeks?/i)?.[1] || 0);
+
+        if (query && !text.includes(query)) return false;
+        if (!matchDomain(card, domain) || !matchDomain(card, selectedDomain)) return false;
+        if (location === 'remote' && !locationText.includes('remote')) return false;
+        if (location === 'sf' && !locationText.includes('san francisco') && !locationText.includes('sf hub')) return false;
+        if (location === 'ny' && !locationText.includes('new york')) return false;
+        if (location === 'sea' && !locationText.includes('seattle')) return false;
+        if (remoteToggle.checked && !locationText.includes('remote')) return false;
+        if (selectedWorkStyle === 'hybrid' && !locationText.includes('hybrid')) return false;
+        if (selectedWorkStyle === 'office' && (locationText.includes('remote') || locationText.includes('hybrid'))) return false;
+        if (pay < Number(stipendSelect.value || 0)) return false;
+        if (durationSelect.value === '8-12' && !(weeks >= 8 && weeks <= 12)) return false;
+        if (durationSelect.value === '12plus' && weeks < 12) return false;
+        return true;
+      }
+
+      function deadlineTimestamp(card) {
+        const match = card.textContent.match(/Apply by ([A-Za-z]+) (\d{1,2})/i)
+          || card.textContent.match(/Deadline: ([A-Za-z]+) (\d{1,2})/i);
+        return match ? Date.parse(`${match[1]} ${match[2]} 2000`) : Infinity;
+      }
+
+      function sortCards(items) {
+        const mode = sortSelect.value;
+        if (mode === 'stipend') {
+          return items.sort((a, b) => Number(b.querySelector('.bg-tertiary-fixed').textContent.match(/\d+/)?.[0] || 0) - Number(a.querySelector('.bg-tertiary-fixed').textContent.match(/\d+/)?.[0] || 0));
+        }
+        if (mode === 'recent') {
+          return items.sort((a, b) => {
+            const age = card => {
+              const match = card.textContent.match(/Posted\s+(\d+)\s*(h|d|w) ago/i);
+              if (!match) return Infinity;
+              return Number(match[1]) * ({ h: 1, d: 24, w: 168 }[match[2].toLowerCase()]);
+            };
+            return age(a) - age(b);
+          });
+        }
+        const datedCards = items.filter(card => Number.isFinite(deadlineTimestamp(card)));
+        if (datedCards.length < items.length) notify('Listings without a published deadline appear after dated listings.');
+        return items.sort((a, b) => deadlineTimestamp(a) - deadlineTimestamp(b));
+      }
+
+      function renderListings() {
+        const matching = sortCards(cards.filter(cardMatches));
+        const totalPages = Math.max(1, Math.ceil(matching.length / pageSize));
+        currentPage = Math.min(currentPage, totalPages);
+        [...matching, ...cards.filter(card => !matching.includes(card))].forEach(card => feed.insertBefore(card, skeleton));
+        const start = (currentPage - 1) * pageSize;
+        const pageCards = matching.slice(start, start + pageSize);
+        cards.forEach(card => card.classList.toggle('hidden', previewMode !== 'normal' || !pageCards.includes(card)));
+        skeleton.classList.toggle('hidden', previewMode !== 'loading');
+        skeleton.classList.toggle('flex', previewMode === 'loading');
+        emptyState.classList.toggle('hidden', previewMode !== 'empty' && (previewMode !== 'normal' || matching.length > 0));
+        emptyState.classList.toggle('flex', previewMode === 'empty' || (previewMode === 'normal' && matching.length === 0));
+        visibleCount.textContent = String(matching.length);
+        pageLabel.textContent = `Page ${currentPage} of ${totalPages}`;
+        numberedButtons.forEach((button, index) => {
+          const page = index + 1;
+          button.hidden = page > totalPages;
+          button.disabled = page > totalPages;
+          button.setAttribute('aria-current', page === currentPage ? 'page' : 'false');
+        });
+        previousButton.disabled = currentPage <= 1;
+        nextButton.disabled = currentPage >= totalPages;
+        const ellipsis = pagination.querySelector('span.text-label-sm');
+        if (ellipsis) ellipsis.hidden = totalPages <= numberedButtons.length;
+      }
+
+      window.applyInternHubFilters = function () {
+        previewMode = 'normal';
+        currentPage = 1;
+        renderListings();
+      };
+      window.syncInternHubDomain = function (domain) {
+        domainSelect.value = domain === 'ai' ? 'data' : domain;
+      };
+
+      window.toggleInternHubBookmark = function (button) {
+        const card = button.closest('.job-card');
+        const title = card.querySelector('h2').textContent.trim();
+        const icon = button.querySelector('.material-symbols-outlined');
+        const isSaved = icon.textContent.trim() !== 'bookmark_border';
+        icon.textContent = isSaved ? 'bookmark_border' : 'bookmark';
+        button.classList.toggle('text-secondary', !isSaved);
+        button.setAttribute('aria-label', `${isSaved ? 'Save' : 'Remove'} ${title} ${isSaved ? 'internship' : 'bookmark'}`);
+        const key = card.dataset.internhubBookmarkKey;
+        try {
+          const saved = new Set(JSON.parse(localStorage.getItem('internhub-bookmarks') || '[]'));
+          if (isSaved) saved.delete(key);
+          else saved.add(key);
+          localStorage.setItem('internhub-bookmarks', JSON.stringify(Array.from(saved)));
+        } catch (error) {
+          notify('Bookmark changed for this page, but browser storage is unavailable.');
+        }
+      };
+
+      cards.forEach((card, index) => {
+        const title = card.querySelector('h2');
+        const company = card.querySelector('.font-label-md').textContent.trim();
+        const bookmark = card.querySelector('button[aria-label^="Save"]');
+        card.dataset.internhubBookmarkKey = `${company}:${title.textContent.trim()}`;
+        title.setAttribute('role', 'button');
+        title.setAttribute('tabindex', '0');
+        title.setAttribute('aria-label', `View details for ${title.textContent.trim()}`);
+        try {
+          const saved = new Set(JSON.parse(localStorage.getItem('internhub-bookmarks') || '[]'));
+          if (saved.has(card.dataset.internhubBookmarkKey)) {
+            bookmark.querySelector('.material-symbols-outlined').textContent = 'bookmark';
+            bookmark.classList.add('text-secondary');
+            bookmark.setAttribute('aria-label', `Remove ${title.textContent.trim()} bookmark`);
+          }
+        } catch (error) {
+          notify('Saved bookmarks could not be loaded from browser storage.');
+        }
+        card.dataset.originalOrder = String(index);
+      });
+
+      const routeTargets = {
+        home: '#home',
+        'explore-internships': '#feed-container',
+        companies: '#cards-feed-wrapper',
+        'career-guide': '#footer-resources',
+        about: '#footer-about'
+      };
+      const mainNav = document.querySelector('header nav');
+      const headerActions = document.querySelector('header > div > div:last-child');
+      const postLink = document.querySelector('header a[data-path="post-an-internship"]');
+      const loginLink = document.querySelector('header a[data-path="login"]');
+      const signupLink = document.querySelector('header a[data-path="sign-up"]');
+      function placeUtilityLinks() {
+        if (window.innerWidth < 768) {
+          mainNav.append(postLink, loginLink);
+        } else {
+          headerActions.insertBefore(postLink, signupLink);
+          headerActions.insertBefore(loginLink, signupLink);
+        }
+      }
+      placeUtilityLinks();
+      window.addEventListener('resize', placeUtilityLinks);
+      const hero = document.querySelector('section.relative.w-full.max-w-7xl');
+      if (hero) hero.id = 'home';
+      const footerColumns = Array.from(document.querySelectorAll('footer .grid > div'));
+      if (footerColumns[0]) footerColumns[0].id = 'footer-about';
+      if (footerColumns[2]) footerColumns[2].id = 'footer-resources';
+
+      document.querySelectorAll('a[data-path]').forEach(link => {
+        const path = link.dataset.path;
+        if (routeTargets[path]) link.href = routeTargets[path];
+      });
+
+      document.addEventListener('click', event => {
+        const pathLink = event.target.closest('a[data-path]');
+        if (pathLink) {
+          const path = pathLink.dataset.path;
+          if (path === 'login') { event.preventDefault(); showLogin(); return; }
+          if (path === 'sign-up') { event.preventDefault(); showSignup(); return; }
+          if (path === 'post-an-internship') { event.preventDefault(); showPostForm(); return; }
+          if (path === 'privacy-policy' || path === 'terms-of-service' || path === 'security' || path === 'contact') {
+            event.preventDefault();
+            const info = {
+              'privacy-policy': ['Privacy Policy', 'A privacy policy has not been configured for this front-end demo.'],
+              'terms-of-service': ['Terms of Service', 'Terms of service have not been configured for this front-end demo.'],
+              security: ['Security', 'This static demo has no account, application, or employer data service connected.'],
+              contact: ['Contact InternHub', 'A support email address has not been configured for this demo.']
+            }[path];
+            showInformation(info[0], info[1]);
+            return;
+          }
+        }
+
+        const cohortLink = event.target.closest('a[href="#feed-container"]');
+        if (cohortLink && cohortLink.textContent.toLowerCase().includes('cohort')) {
+          event.preventDefault();
+          showCohorts();
+          return;
+        }
+
+        const applyLink = event.target.closest('.job-card a[href="#quick-apply"]');
+        if (applyLink) {
+          event.preventDefault();
+          showApplication(applyLink.closest('.job-card'));
+          return;
+        }
+
+        const socialLink = event.target.closest('footer a[aria-label]');
+        if (socialLink && !socialLink.hasAttribute('data-path')) {
+          event.preventDefault();
+          notify(`${socialLink.getAttribute('aria-label')} link is not configured in this demo.`);
+        }
+
+        if (event.target.closest('.job-card h2[role="button"]')) {
+          showDetails(event.target.closest('.job-card'));
+          return;
+        }
+        if (event.target.closest('[data-apply-from-details]')) {
+          return;
+        }
+      });
+
+      document.addEventListener('keydown', event => {
+        const title = event.target.closest('.job-card h2[role="button"]');
+        if (title && (event.key === 'Enter' || event.key === ' ')) {
+          event.preventDefault();
+          showDetails(title.closest('.job-card'));
+        }
+      });
+
+      document.querySelector('button[aria-label="Search listings"]')?.addEventListener('click', event => {
+        event.preventDefault();
+        keywordInput.focus();
+        keywordInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+      const profileButton = document.querySelector('header > div > div:last-child > div');
+      if (profileButton) {
+        profileButton.setAttribute('role', 'button');
+        profileButton.setAttribute('tabindex', '0');
+        profileButton.setAttribute('aria-label', 'Open login');
+        profileButton.addEventListener('click', showLogin);
+        profileButton.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            showLogin();
+          }
+        });
+      }
+
+      const searchForm = document.getElementById('hero-search-form');
+      searchForm.addEventListener('submit', event => {
+        event.preventDefault();
+        currentPage = 1;
+        previewMode = 'normal';
+        renderListings();
+        document.getElementById('feed-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      document.getElementById('search-btn').addEventListener('click', () => searchForm.requestSubmit());
+      [locationSelect, domainSelect, stipendSelect, durationSelect, remoteToggle, sortSelect].forEach(control => {
+        control.addEventListener('change', () => {
+          if (control === remoteToggle) {
+            selectedWorkStyle = remoteToggle.checked ? 'remote' : '';
+            workButtons.forEach(button => button.classList.toggle('ih-work-style-active', button.dataset.workStyle === selectedWorkStyle));
+          }
+          if (control === domainSelect) {
+            const domain = domainSelect.value === 'data' ? 'ai' : domainSelect.value;
+            filterPills.forEach(pill => {
+              const active = pill.dataset.filter === domain;
+              pill.classList.toggle('active', active);
+              pill.classList.toggle('bg-secondary', active);
+              pill.classList.toggle('text-on-secondary', active);
+              pill.classList.toggle('shadow-sm', active);
+              pill.classList.toggle('bg-surface-container-low', !active);
+              pill.classList.toggle('text-on-surface-variant', !active);
+              pill.setAttribute('aria-pressed', String(active));
+            });
+          }
+          currentPage = 1;
+          previewMode = 'normal';
+          renderListings();
+        });
+      });
+      keywordInput.addEventListener('input', () => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => { currentPage = 1; previewMode = 'normal'; renderListings(); }, 120);
+      });
+
+      document.getElementById('reset-filters-btn').addEventListener('click', resetFilters);
+      document.getElementById('empty-reset-btn').addEventListener('click', resetFilters);
+      document.getElementById('empty-restore-btn').addEventListener('click', () => {
+        resetFilters();
+        document.getElementById('feed-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      function resetFilters() {
+        keywordInput.value = '';
+        locationSelect.value = 'all';
+        domainSelect.value = 'all';
+        stipendSelect.value = '0';
+        durationSelect.value = 'all';
+        remoteToggle.checked = false;
+        sortSelect.value = 'recent';
+        selectedWorkStyle = '';
+        document.querySelectorAll('[data-work-style]').forEach(button => button.classList.remove('ih-work-style-active'));
+        document.querySelectorAll('aside input[type="checkbox"]').forEach((input, index) => {
+          input.checked = index < 2;
+        });
+        filterPills.forEach((pill, index) => {
+          const active = index === 0;
+          pill.classList.toggle('active', active);
+          pill.classList.toggle('bg-secondary', active);
+          pill.classList.toggle('text-on-secondary', active);
+          pill.classList.toggle('shadow-sm', active);
+          pill.classList.toggle('bg-surface-container-low', !active);
+          pill.classList.toggle('text-on-surface-variant', !active);
+          pill.setAttribute('aria-pressed', String(active));
+        });
+        previewMode = 'normal';
+        currentPage = 1;
+        renderListings();
+      }
+
+      const workButtons = Array.from(document.querySelectorAll('aside button')).filter(button => ['100% Remote', 'Hybrid Allowed', 'In-Office HQ'].includes(button.textContent.trim()));
+      workButtons.forEach(button => {
+        const label = button.textContent.trim();
+        const value = label === '100% Remote' ? 'remote' : label === 'Hybrid Allowed' ? 'hybrid' : 'office';
+        button.dataset.workStyle = value;
+        button.addEventListener('click', () => {
+          selectedWorkStyle = selectedWorkStyle === value ? '' : value;
+          workButtons.forEach(item => item.classList.toggle('ih-work-style-active', item.dataset.workStyle === selectedWorkStyle));
+          if (value === 'remote') remoteToggle.checked = selectedWorkStyle === 'remote';
+          else remoteToggle.checked = false;
+          currentPage = 1;
+          renderListings();
+        });
+      });
+
+      document.querySelectorAll('aside input[type="checkbox"]').forEach(input => {
+        input.addEventListener('change', () => notify('Eligibility preferences are selected, but eligibility data is not available in these sample listings.'));
+      });
+
+      document.getElementById('btn-preview-loading').addEventListener('click', event => {
+        previewMode = event.currentTarget.textContent.includes('Hide') ? 'loading' : 'normal';
+        renderListings();
+      });
+      document.getElementById('btn-preview-empty').addEventListener('click', () => {
+        previewMode = 'empty';
+        renderListings();
+      });
+      pageButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          if (button === previousButton) currentPage = Math.max(1, currentPage - 1);
+          else if (button === nextButton) currentPage++;
+          else if (/^\d+$/.test(button.textContent.trim())) currentPage = Number(button.textContent.trim());
+          previewMode = 'normal';
+          renderListings();
+          document.getElementById('feed-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      modal.addEventListener('change', event => {
+        const toggle = event.target.closest('[data-show-password]');
+        if (!toggle) return;
+        const names = toggle.dataset.showPassword === 'all'
+          ? ['password', 'confirmPassword']
+          : [toggle.dataset.showPassword];
+        names.forEach(name => {
+          const password = modal.querySelector(`[name="${name}"]`);
+          if (password) password.type = toggle.checked ? 'text' : 'password';
+        });
+      });
+      modal.addEventListener('submit', event => {
+        const form = event.target.closest('[data-demo-form]');
+        if (!form) return;
+        event.preventDefault();
+        const data = new FormData(form);
+        const email = String(data.get('email') || '').trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          setFormMessage(form, 'Enter a valid email address.', 'error');
+          return;
+        }
+        if (form.dataset.demoForm === 'login') {
+          const password = String(data.get('password') || '');
+          if (password.length < 8) {
+            setFormMessage(form, 'Password must be at least 8 characters.', 'error');
+            return;
+          }
+          setFormMessage(form, 'Demo only: input validated locally. No account was signed in.', 'success');
+          return;
+        }
+        if (form.dataset.demoForm === 'signup') {
+          if (String(data.get('name') || '').trim().length < 2) {
+            setFormMessage(form, 'Enter your full name.', 'error');
+            return;
+          }
+          const password = String(data.get('password') || '');
+          if (password.length < 8) {
+            setFormMessage(form, 'Password must be at least 8 characters.', 'error');
+            return;
+          }
+          if (password !== data.get('confirmPassword')) {
+            setFormMessage(form, 'Passwords do not match.', 'error');
+            return;
+          }
+          setFormMessage(form, 'Demo only: details validated. No account was created or stored.', 'success');
+          return;
+        }
+        if (!form.reportValidity()) {
+          setFormMessage(form, 'Complete the required fields with valid values.', 'error');
+          return;
+        }
+        setFormMessage(form, form.dataset.demoForm === 'application'
+          ? 'Demo only: application details validated. Nothing was submitted or stored.'
+          : 'Demo only: listing details validated. Nothing was posted or stored.', 'success');
+      });
+
+      document.getElementById('sort-dropdown').addEventListener('change', () => {
+        if (sortSelect.value === 'deadline' && !cards.some(card => Number.isFinite(deadlineTimestamp(card)))) {
+          notify('No application deadlines are present in the sample listings.');
+        }
+      });
+      renderListings();
+    });
   </script>
 </div></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)] mt-auto"><div class="max-w-7xl mx-auto px-margin pt-16 pb-12"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-xl mb-12"><div class="lg:col-span-4 flex flex-col gap-space-md"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-secondary to-secondary-container flex items-center justify-center text-on-secondary"><span class="material-symbols-outlined text-[20px]">mobile_code</span></div><span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">Intern<span class="text-secondary">Hub</span></span></div><p class="font-body-md text-body-md text-on-surface-variant max-w-sm">Connecting emerging tech talent with top-tier internships and high-growth engineering cohorts worldwide.</p><div class="inline-flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-low w-fit"><span class="material-symbols-outlined text-on-tertiary-container text-[16px]">verified</span><span class="font-label-xs text-label-xs text-on-tertiary-container">100% Verified Employer Roles</span></div></div><div class="lg:col-span-3 flex flex-col gap-space-sm"><span class="font-title-md text-title-md text-on-surface">Explore</span><ul class="flex flex-col gap-space-xs font-body-md text-body-md text-on-surface-variant"><li><a class="hover:text-secondary transition-colors" data-path="explore-internships" href="#">Browse Roles</a></li><li><a class="hover:text-secondary transition-colors" data-path="explore-internships" href="#">Top Tech Hubs</a></li><li><a class="hover:text-secondary transition-colors" data-path="explore-internships" href="#">Fast-track Cohorts</a></li><li><a class="hover:text-secondary transition-colors" data-path="explore-internships" href="#">Remote Jobs</a></li></ul></div><div class="lg:col-span-3 flex flex-col gap-space-sm"><span class="font-title-md text-title-md text-on-surface">Resources</span><ul class="flex flex-col gap-space-xs font-body-md text-body-md text-on-surface-variant"><li><a class="hover:text-secondary transition-colors" data-path="career-guide" href="#">Resume Guide</a></li><li><a class="hover:text-secondary transition-colors" data-path="career-guide" href="#">Salary Calculator</a></li><li><a class="hover:text-secondary transition-colors" data-path="career-guide" href="#">Interview Prep</a></li><li><a class="hover:text-secondary transition-colors" data-path="career-guide" href="#">Student Perks</a></li></ul></div><div class="lg:col-span-2 flex flex-col gap-space-sm"><span class="font-title-md text-title-md text-on-surface">Legal &amp; Support</span><ul class="flex flex-col gap-space-xs font-body-md text-body-md text-on-surface-variant"><li><a class="hover:text-secondary transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a></li><li><a class="hover:text-secondary transition-colors" data-path="terms-of-service" href="#">Terms of Service</a></li><li><a class="hover:text-secondary transition-colors" data-path="security" href="#">Security</a></li><li><a class="hover:text-secondary transition-colors" data-path="contact" href="#">Contact Us</a></li></ul></div></div><div class="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a aria-label="Public Community" class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-secondary hover:bg-secondary-fixed transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">forum</span></a><a aria-label="Code Repository" class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-secondary hover:bg-secondary-fixed transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">terminal</span></a><a aria-label="Global Network" class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-secondary hover:bg-secondary-fixed transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">globe</span></a></div><p class="font-label-sm text-label-sm text-on-surface-variant text-center sm:text-right">© 2025 InternHub Inc. Engineered for elite builders.</p></div></div></footer></body></html>
