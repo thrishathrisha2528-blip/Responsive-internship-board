@@ -56,3 +56,10 @@ https://thrishathrisha2528-blip.github.io/Responsive-internship-board/
 ## 👩‍💻 Project Purpose
 
 This project was developed as part of the EdVyro internship task to demonstrate frontend development skills, responsive web design, JavaScript functionality and basic accessibility practices.
+
+## 📸 Screenshots
+
+
+![InternHub Desktop](screenshots/intern 1.jpg)
+
+![Internship Listings](screenshots/intern 2.jpg)
